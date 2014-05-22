@@ -9,6 +9,5 @@ version          '0.0.1'
 
 supports 'ubuntu'
 
-depends 'cloud_monitoring'
 depends 'apt'
 depends 'cron'
