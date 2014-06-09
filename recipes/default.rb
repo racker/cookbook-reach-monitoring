@@ -1,6 +1,14 @@
 # encoding: UTF-8
 
-package('ruby-dev').run_action(:install)
+package( 'libxml2-dev' ).run_action( :install )
+package( 'libxslt-dev' ).run_action( :install )
+
+# Hack to get nokogiri to build.  By default it does not have /usr/lib/libxml2 in its
+# include path.  Not sure that there is a better way to do this.
+
+link "/usr/include/libxml" do
+  to "/usr/include/libxml2/libxml"
+end.run_action(:create)
 
 chef_gem 'builder' do
   action :install
